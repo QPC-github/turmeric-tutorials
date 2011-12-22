@@ -1,0 +1,10 @@
+<?xml version='1.0'?>
+<plugin>
+	<extension point="org.eclipse.vex.ui.styles" name="docbook-procedures"
+		id="id3">
+		<style css="docbook-procedures.css">
+			<doctypeRef publicId="-//OASIS//DTD DocBook XML V4.5//EN" />
+		</style>
+	</extension>
+
+</plugin>

@@ -1,0 +1,17 @@
+This project is the current home for tutorials for the Turmeric SOA project.
+The tutorials will eventually be combined into a book, but will be available
+in multiple formats.  HTML, epub, and PDF are the current target formats.
+
+Content is captured in docbook format and then generated to the appropriate
+target format using the docbkx-tools maven plugin.
+
+To build the documentation, just run:
+
+mvn clean install
+
+The documentation will be output to the turmerictutorials/target directory.
+
+The docbook-procedures directory is a Vex plugin project that adds some 
+additonal rendering for the Eclipse Vex editor to display the Procedures
+and Steps in a better way.
+
