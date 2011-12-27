@@ -1,0 +1,133 @@
+<?xml version='1.0'?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<chapter>
+  <title>Installation</title>
+  <section>
+    <title>Requirements</title>
+    <para>There are several items that are needed for this 
+    tutorial.</para>
+    <orderedlist>
+      <listitem>
+        <para>Eclipse Java EE 3.5 or higher.</para>
+        <note>
+          <para>Currently Eclipse 4.x is not supported. Support for 
+          Eclipse 4.x is planned for a future release of the 
+          plugins.</para>
+        </note>
+      </listitem>
+      <listitem>
+        <para><emphasis>M2Eclipse</emphasis> 0.12 from Sonatype 
+        installed. The update site is 
+        <ulink url="http://m2eclipse.sonatype.org/sites/m2e">
+        http://m2eclipse.sonatype.org/sites/m2e</ulink>.</para>
+      </listitem>
+      <listitem>
+        <para><emphasis>Maven</emphasis> 3.0 or higher is required.  
+        Maven may be <ulink url="http://maven.apache.org/">
+        downloaded</ulink> from Apache.</para>
+      </listitem>
+      <listitem>
+        <para>Turmeric Eclipse Plugins 1.0.0 or higher installed. The 
+        update site is 
+        <ulink url="https://www.ebayopensource.org/downloads/turmeric/turmeric-1.1.0/">
+        https://www.ebayopensource.org/downloads/turmeric/turmeric-1.1.0/</ulink>.</para>
+      </listitem>
+      <listitem>
+        <para>An active Internet connection.</para>
+      </listitem>
+    </orderedlist>
+    <para>The eclipse plugins leverage and extend the functionality 
+    provided by the Java EE edition of eclipse and depend on 
+    functionality provided by the M2Eclipse plugins. Other versions of 
+    eclipse may work, but will require the XML, WSDL, and other web 
+    service related plugins be installed.</para>
+  </section>
+  <section>
+    <title>Recommended Readings</title>
+    <para>These tutorials depend heavily on <emphasis>Maven</emphasis>, 
+    and <emphasis>M2Eclipse</emphasis>. If you are unfamiliar with 
+    <emphasis>Maven</emphasis> and the <emphasis>M2Eclipse</emphasis> 
+    plugins it is recommended to review the following material before 
+    proceeding with these tutorials.</para>
+    <para>
+      <itemizedlist>
+        <listitem>
+          <para>
+          <ulink url="http://www.sonatype.com/books/mvnex-book/reference/public-book.html">Maven 
+          by Example</ulink> - This provides a good overview of Maven 
+          as well as a set of tutorials to familiarize the user with 
+          maven poms..</para>
+        </listitem>
+        <listitem>
+          <para>
+          <ulink url="http://www.sonatype.com/books/m2eclipse-book/reference/">Developing 
+          with Eclipse and Maven</ulink> - This builds on the knowledge 
+          gained from <emphasis>Maven by Example</emphasis>, but 
+          focuses on using the M2Eclipse plugins with an Eclipse based 
+          IDE.</para>
+        </listitem>
+      </itemizedlist>
+    </para>
+  </section>
+  <section>
+    <title>Turmeric Configuration</title>
+    <para>After installing the necessary plugins there a a few items 
+    that need to be tweaked in the preferences.</para>
+    <procedure>
+      <title>Change Turmeric Preferred Version</title>
+      <step>
+        <para>Select <emphasis>Window-&gt;Preferences-&gt;Turmeric SOA 
+        Plugin-&gt;Turmeric SOA Configuratons</emphasis>.</para>
+      </step>
+      <step>
+        <para>Click the <emphasis>Overwrite Preferred 
+        Version</emphasis> check box.</para>
+      </step>
+      <step>
+        <para>Enter the most current turmeric version number to use. As 
+        of this writing it is 1.1.0.</para>
+      </step>
+      <step>
+        <para>Click OK or Apply to save the change.</para>
+      </step>
+    </procedure>
+    <para>The preferred version is used during the Turmeric Wizards for 
+    pre-populating the version number of turmeric to be used in the 
+    generated project pom files. If this is not specified it will use 
+    the highest version number it can find in the local maven 
+    repository. This could be a snapshot version and most cases you do 
+    not want to be using a snapshot version.</para>
+    <para>In addition you will need to create and specify a maven 
+    settings.xml file to use. The settings.xml tells maven which 
+    repositories should be searched for maven artifacts. Since 
+    currently the Turmeric SOA artifacts are not in maven central, you 
+    need to let M2Eclipse know about the Turmeric SOA repository.</para>
+    <procedure>
+      <title>Change Maven Settings Preference</title>
+      <step id="stp_mvn_settings_download">
+        <para>Download a copy of a pre-configured settings.xml with the 
+        appropriate repositories enabled for Turmeric SOA artifacts 
+        from 
+        <ulink url="https://raw.github.com/ebayopensource/turmeric-releng/master/settings.xml">
+        https://raw.github.com/ebayopensource/turmeric-releng/master/settings.xml</ulink>.</para>
+      </step>
+      <step>
+        <para>Save the file to a location on your hard drive.</para>
+      </step>
+      <step>
+        <para>Next in Eclipse go to 
+        <emphasis>Windows-&gt;Preferences-&gt;Maven-&gt;User 
+        Settings</emphasis>.</para>
+      </step>
+      <step>
+        <para>Change the <emphasis role="bold">User Settings</emphasis> 
+        text box to point to the location where you saved the 
+        <emphasis>settings.xml</emphasis> you downloaded earlier.</para>
+      </step>
+      <step>
+        <para>Click <emphasis>OK</emphasis> or 
+        <emphasis>Apply</emphasis> to save the changes.</para>
+      </step>
+    </procedure>
+  </section>
+</chapter>

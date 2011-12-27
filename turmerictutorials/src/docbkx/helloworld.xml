@@ -1,119 +1,14 @@
 <?xml version='1.0'?>
-<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
-<article>
-  <title>Creating a Simple HelloWorld Service</title>
-  <articleinfo>
-    <author><firstname>David</firstname><surname>Carver</surname></author>
-    <date>December 21, 2011</date>
-  </articleinfo>
-  <abstract>
-    <title>Creating a Simple HelloWorld Service</title>
-    <para>This article will walk the user through how to create a 
-    simple HelloWorld service. The service will support SOAP, XML, 
-    JSON, and Name Value pair data formats as Input and Output. The 
-    tutorial should take no longer than 30 minutes to complete.</para>
-  </abstract>
-  <section>
-    <title>Requirements</title>
-    <para>There are several items that are needed for this 
-    tutorial.</para>
-    <orderedlist>
-      <listitem>
-        <para>Eclipse Java EE 3.5 or higher.</para>
-        <note>
-          <para>Currently Eclipse 4.x is not supported. Support for 
-          Eclipse 4.x is planned for a future release of the 
-          plugins.</para>
-        </note>
-      </listitem>
-      <listitem>
-        <para>M2Eclipse 0.12 from Sonatype installed. The update site 
-        is 
-        <ulink>http://m2eclipse.sonatype.org/sites/m2e</ulink>.</para>
-      </listitem>
-      <listitem>
-        <para>Turmeric Eclipse Plugins 1.0.0 or higher installed. The 
-        update site is 
-        <ulink>https://www.ebayopensource.org/downloads/turmeric/turmeric-1.1.0/</ulink>.</para>
-      </listitem>
-      <listitem>
-        <para>An active Internet connection.</para>
-      </listitem>
-    </orderedlist>
-    <para>The eclipse plugins leverage and extend the functionality 
-    provided by the Java EE edition of eclipse and depend on 
-    functionality provided by the M2Eclipse plugins. Other versions of 
-    eclipse may work, but will require the XML, WSDL, and other web 
-    service related plugins be installed.</para>
-    <section>
-      <title>Post Installation</title>
-      <para>After installing the necessary plugins there a a few items 
-      that need to be tweaked in the preferences.</para>
-      <procedure>
-        <title>Change Turmeric Preferred Version</title>
-        <step>
-          <para>Select <emphasis>Window-&gt;Preferences-&gt;Turmeric 
-          SOA Plugin-&gt;Turmeric SOA Configuratons</emphasis>.</para>
-        </step>
-        <step>
-          <para>Click the <emphasis>Overwrite Preferred 
-          Version</emphasis> check box.</para>
-        </step>
-        <step>
-          <para>Enter the most current turmeric version number to use. 
-          As of this writing it is 1.1.0.</para>
-        </step>
-        <step>
-          <para>Click OK or Apply to save the change.</para>
-        </step>
-      </procedure>
-      <para>The preferred version is used during the Turmeric Wizards 
-      for pre-populating the version number of turmeric to be used in 
-      the generated project pom files. If this is not specified it will 
-      use the highest version number it can find in the local maven 
-      repository. This could be a snapshot version and most cases you 
-      do not want to be using a snapshot version.</para>
-      <para>In addition you will need to create and specify a maven 
-      settings.xml file to use. The settings.xml tells maven which 
-      repositories should be searched for maven artifacts. Since 
-      currently the Turmeric SOA artifacts are not in maven central, 
-      you need to let M2Eclipse know about the Turmeric SOA 
-      repository.</para>
-      <procedure>
-        <title>Change Maven Settings Preference</title>
-        <step id="stp_mvn_settings_download">
-          <para>Download a copy of a pre-configured settings.xml with 
-          the appropriate repositories enabled for Turmeric SOA 
-          artifacts from 
-          <ulink url="https://raw.github.com/ebayopensource/turmeric-releng/master/settings.xml">
-          https://raw.github.com/ebayopensource/turmeric-releng/master/settings.xml</ulink>.</para>
-        </step>
-        <step>
-          <para>Save the file to a location on your hard drive.</para>
-        </step>
-        <step>
-          <para>Next in Eclipse go to 
-          <emphasis>Windows-&gt;Preferences-&gt;Maven-&gt;User 
-          Settings</emphasis>.</para>
-        </step>
-        <step>
-          <para>Change the <emphasis role="bold">User 
-          Settings</emphasis> text box to point to the location where 
-          you saved the entry in 
-          <xref linkend="stp_mvn_settings_download"/>.</para>
-        </step>
-        <step>
-          <para>Click OK or Apply to save the changes.</para>
-        </step>
-      </procedure>
-    </section>
-  </section>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<chapter>
+  <title>Creating a Simple Service</title>
+  <para>This chapter will walk the user through creating a simple 
+  HelloWorld service.  By the end of the chapter, the user will have 
+  gone through the necessary steps to create and test a turmeric soa 
+  service capable of supporting JSON, XML, Name Value Pair, and SOAP 
+  1.1 and 1.2 formats.</para>
   <section>
     <title>Creating a Service</title>
-    <para>The plugin is populated with default values as shown below. 
-    In this tutorial, the Service Name is EchoService. To edit a field, 
-    click its Override checkbox. To view a tool tip with a brief 
-    explanation, hover on a field.</para>
     <para>To create a Turmeric service, use the Service Creation 
     wizard:</para>
     <procedure>
@@ -128,25 +23,30 @@
         WSDL)</emphasis> menu.</para>
       </step>
       <step>
-        <para>Click <emphasis>Template WSDL</emphasis>. Then New 
-        Service From Template WSDL dialog box opens.</para>
+        <para>Click <emphasis>Template WSDL</emphasis>. Then the 
+        <emphasis>New Service From Template WSDL</emphasis> dialog box 
+        opens.</para>
       </step>
       <step>
-        <para>Change the Domain Name to Demo</para>
+        <para>Change the <emphasis>Domain Name</emphasis> to 
+        <emphasis role="bold">Demo</emphasis></para>
       </step>
       <step>
-        <para>If necessary, change the Target Namespace from 
-        <ulink>http://www.ebayopensource.org/turmeric/sample_namespacepart/v1/services</ulink> 
+        <para>If necessary, change the <emphasis>Target 
+        Namespace</emphasis> from 
+        <ulink url="http://www.ebayopensource.org/turmeric/sample_namespacepart/v1/services">
+        http://www.ebayopensource.org/turmeric/sample_namespacepart/v1/services</ulink> 
         to 
-        <ulink>http://www.ebayopensource.org/turmeric/demo/v1/services</ulink>.</para>
+        <ulink url="http://www.ebayopensource.org/turmeric/demo/v1/services">
+        http://www.ebayopensource.org/turmeric/demo/v1/services</ulink>.</para>
       </step>
       <step>
         <para>Change the <emphasis>Service Name</emphasis> to 
         <emphasis>DemoHelloWorldService</emphasis>.</para>
       </step>
       <step>
-        <para>If necessary, change the Admin Name from 
-        <emphasis>Sample_NamespaceHelloWorderviceV1</emphasis> to 
+        <para>If necessary, change the <emphasis>Admin Name</emphasis> 
+        from <emphasis>Sample_NamespaceHelloWorderviceV1</emphasis> to 
         <emphasis>DemoHelloWorldServiceV1</emphasis>.</para>
       </step>
       <step>
@@ -154,12 +54,13 @@
       </step>
     </procedure>
     <procedure>
-      <title>Changing the Operation Name</title>
+      <title>Add a <emphasis>hello</emphasis> operation</title>
       <step>
-        <para>Select the getVersion operation name.</para>
+        <para>Press the <emphasis>Add Operation</emphasis> button</para>
       </step>
       <step>
-        <para>Change the name of the operation to 
+        <para>Select the newly added operation 
+        <emphasis>newOperation</emphasis>, and change it to 
         <emphasis>hello</emphasis>.</para>
       </step>
       <step>
@@ -199,7 +100,7 @@
     created is to comment out an option in the DemoHelloWorldServiceV1 
     project&apos;s service_intf_project.properties file.</para>
     <procedure>
-      <title>Update the Service Interface Properties fle.</title>
+      <title>Update the Service Interface Properties file.</title>
       <tip>
         <para>This step is only needed if you are using Turmeric SOA 
         1.1.0. Versions prior to this do not have Protobuf support. 
@@ -263,178 +164,188 @@
     <title>Testing the Service</title>
     <para>There are many different ways to test the web service. One of 
     the simpliest ways is to use the jetty-maven-plugin to launch the 
-    newly created service and then use your Web Browser. We will be 
-    testing the DemoHelloWorldV1Impl service we implemented in the 
-    prior section. To do this we will be creating a new project that is 
-    a Maven WebApp.</para>
-    <procedure>
-      <title>Create a Maven WebApp Project</title>
-      <step>
-        <para>Select <emphasis>File-&gt;New-&gt;Project-&gt;Maven 
-        Project</emphasis>.</para>
-      </step>
-      <step>
-        <para>Press Next.</para>
-      </step>
-      <step>
-        <para>In the Maven Archetype selection box, select the 
-        <emphasis>maven-archetype-webapp</emphasis> and press 
-        Next.</para>
-      </step>
-      <step>
-        <para>Enter the groupId: 
-        <emphasis>com.example.demo</emphasis></para>
-      </step>
-      <step>
-        <para>Enter the artifactId: 
-        <emphasis>test-hello-world</emphasis></para>
-      </step>
-      <step>
-        <para>Change the version to 
-        <emphasis>1.0.0-SNAPSHOT</emphasis></para>
-      </step>
-      <step>
-        <para>Press <emphasis>Finish</emphasis>.</para>
-      </step>
-    </procedure>
-    <para>This will create a new project in your workspace called 
-    test-hello-world. It will be setup for a basic web project, and if 
-    mvn clean install is run on the project build a war file. Next we 
-    need to update the generated web.xml with some information and add 
-    a dependency to the DemoHelloWorldV1Impl project.</para>
-    <procedure>
-      <title>Update the web.xml</title>
-      <step>
-        <para>From the <emphasis>DemoHelloWorldV1Impl</emphasis> 
-        project copy the <emphasis>web.xml</emphasis> file from 
-        <emphasis>gen-src-webapp/WEB-INF</emphasis> to 
-        <emphasis>test-hello-world/src/main/webapp/WEB-INF</emphasis>. 
-        You will replace the existing web.xml that resides in the 
-        destination directory.</para>
-      </step>
-    </procedure>
-    <para>The web.xml contains the necessary entries to allow the web 
-    service to respond to requests. Once the web.xml file has been 
-    copied over into the test-hello-world project, we need to setup the 
-    project so that we can use the jetty-maven-plugin to run the 
-    service.</para>
-    <procedure>
-      <title>Add Dependencies and jetty-maven-plugin</title>
-      <step>
-        <para>Edit the test-hello-world pom.xml file using the pom 
-        editor.</para>
-      </step>
-      <step>
-        <para>Select the XML tab in the pom editor to bring up the XML 
-        source editor for the pom.</para>
-      </step>
-      <step>
-        <para>Add the DemoHelloWorldV1Impl project as a dependency in 
-        the pom:</para>
-        <programlisting lang="xml">&lt;dependency&gt;
+    newly created service and then use your Web Browser.</para>
+    <section>
+      <title>Creating a Maven WebApp Project</title>
+      <para>We will be testing the DemoHelloWorldV1Impl service we 
+      implemented in the prior section. To do this we will be creating 
+      a new project that is a Maven WebApp.</para>
+      <procedure>
+        <title>Create a Maven WebApp Project</title>
+        <step>
+          <para>Select <emphasis>File-&gt;New-&gt;Project-&gt;Maven 
+          Project</emphasis>.</para>
+        </step>
+        <step>
+          <para>Press <emphasis>Next</emphasis>.</para>
+        </step>
+        <step>
+          <para>In the <emphasis>Maven Archetype</emphasis> selection 
+          box, select the <emphasis>maven-archetype-webapp</emphasis> 
+          and press Next.</para>
+        </step>
+        <step>
+          <para>Enter the groupId: 
+          <emphasis>com.example.demo</emphasis></para>
+        </step>
+        <step>
+          <para>Enter the artifactId: 
+          <emphasis>test-hello-world</emphasis></para>
+        </step>
+        <step>
+          <para>Change the version to 
+          <emphasis>1.0.0-SNAPSHOT</emphasis></para>
+        </step>
+        <step>
+          <para>Press <emphasis>Finish</emphasis>.</para>
+        </step>
+      </procedure>
+      <para>This will create a new project in your workspace called 
+      <emphasis>test-hello-world</emphasis>. It will be setup for a 
+      basic web project, and if <emphasis>mvn clean install</emphasis> 
+      is run the project will build a war file. Next we need to update 
+      the generated web.xml with some information and add a dependency 
+      to the DemoHelloWorldV1Impl project.</para>
+    </section>
+    <section>
+      <title>Creating the Service WAR</title>
+      <para>The web.xml contains the necessary entries to allow the web 
+      service to respond to requests. Once the web.xml file has been 
+      copied over into the test-hello-world project, we need to setup 
+      the project so that we can use the jetty-maven-plugin to run the 
+      service.</para>
+      <procedure>
+        <title>Update the web.xml, Add Dependencicies, and 
+        jetty-mave-plugin</title>
+        <step>
+          <para>From the <emphasis>DemoHelloWorldV1Impl</emphasis> 
+          project copy the <emphasis>web.xml</emphasis> file from 
+          <emphasis>gen-src-webapp/WEB-INF</emphasis> to 
+          <emphasis>test-hello-world/src/main/webapp/WEB-INF</emphasis>. 
+          You will replace the existing web.xml that resides in the 
+          destination directory.</para>
+        </step>
+        <step>
+          <para>Edit the test-hello-world pom.xml file using the pom 
+          editor.</para>
+        </step>
+        <step>
+          <para>Select the XML tab in the pom editor to bring up the 
+          XML source editor for the pom.</para>
+        </step>
+        <step>
+          <para>Add the DemoHelloWorldV1Impl project as a dependency in 
+          the pom:</para>
+          <programlisting lang="xml">&lt;dependency&gt;
   &lt;groupId&gt;org.ebayopensource.turmeric.impl&lt;/groupId&gt;
   &lt;artifactId&gt;DemoHelloWorldV1Impl&lt;/artifactId&gt;
   &lt;version&gt;1.0.0&lt;/version&gt;
 &lt;/dependency&gt;
 </programlisting>
-        <para>Add the above after the entry for junit that occurs in 
-        the pom.</para>
-      </step>
-      <step>
-        <para>Next we need to add some information for the version of 
-        the jetty-maven-plugin we want to use. In this case we&apos;ll 
-        use version 7.5.4.v20111024 which is the most current at this 
-        time. Add the following to the build element.</para>
-        <programlisting lang="xml">&lt;plugins&gt;
+          <para>Add the above after the entry for junit that occurs in 
+          the pom.</para>
+        </step>
+        <step>
+          <para>Next we need to add some information for the version of 
+          the jetty-maven-plugin we want to use. In this case 
+          we&apos;ll use version 7.5.4.v20111024 which is the most 
+          current at this time. Add the following to the build 
+          element.</para>
+          <programlisting lang="xml">&lt;plugins&gt;
    &lt;plugin&gt;
      &lt;groupId&gt;org.mortbay.jetty&lt;/groupId&gt;
      &lt;artifactId&gt;jetty-maven-plugin&lt;/artifactId&gt;
      &lt;version&gt;7.5.4.v20111024&lt;/version&gt;
    &lt;/plugin&gt;
 &lt;/plugins&gt;</programlisting>
-      </step>
-      <step>
-        <para>Save the pom.</para>
-      </step>
-    </procedure>
-    <para>The next to last item we have to do is make sure the 
-    DemoHelloWorldV1 and DemoHelloWorldV1Impl projects are installed 
-    into the local maven repository. Otherwise when the 
-    jetty-maven-plugin runs it can not locate the necessary 
-    files.</para>
-    <procedure>
-      <title>Install DemoHelloWorldV1 and DemoHelloWorldV1Impl</title>
-      <step>
-        <para>Select the project&apos;s pom.xml file.</para>
-      </step>
-      <step>
-        <para>Right mouse click and select Run As-&gt;Maven 
-        Install.</para>
-      </step>
-      <step>
-        <para>Repeat the steps for the remaining project.</para>
-      </step>
-    </procedure>
-    <para>The final step is to actually build the WAR, launch the 
-    service for testing, and test it using your favorite web 
-    browser.</para>
-    <procedure>
-      <title>Launching and Testing the Service</title>
-      <step>
-        <para>Right click on the 
-        <emphasis>test-hello-world/pom.xml</emphasis>.</para>
-      </step>
-      <step>
-        <para>Select <emphasis>Run-As-&gt;Maven build</emphasis>. If 
-        this is the first time the build has run a Launch configuration 
-        will open and follow the next steps.</para>
-      </step>
-      <step>
-        <para>For the build goals enter: 
-        <emphasis>jetty:run-war</emphasis></para>
-      </step>
-      <step>
-        <para>Press OK to save the configuration and run it.</para>
-      </step>
-      <step>
-        <para>This will launch a Maven Build, and build the war file. 
-        It will then start the Jetty application server running on Port 
-        8080. Once the application server has been started the console 
-        View will indicate that Jetty has Started.</para>
-      </step>
-      <step>
-        <para>Open your web browser and enter the following url then 
-        press enter: 
-        <ulink url="http://localhost:8080/DemoHelloWorldV1Impl?wsdl">
-        http://localhost:8080/DemoHelloWorldV1Impl?wsdl</ulink></para>
-      </step>
-      <step>
-        <para>The service will display the WSDL that it is based 
-        against.</para>
-      </step>
-      <step>
-        <para>If prior step worked, we can test our service 
-        implementation. By default the service returns XML format for 
-        the response. Enter the following url to have the server say, 
-        &quot;Hi, Turmeric&quot;. 
-        <ulink>http://localhost:8080/DemoHelloWorldV1Impl?X-TURMERIC-OPERATION-NAME=hello&amp;helloText=Turmeric</ulink></para>
-        <para>A response should be returned that looks similar to the 
-        following:</para>
-        <programlisting lang="xml">&lt;helloResponse&gt;
+        </step>
+        <step>
+          <para>Save the pom.</para>
+        </step>
+      </procedure>
+    </section>
+    <section>
+      <title>Installing the Service to the Maven Repository</title>
+      <para>The next to last item we have to do is make sure the 
+      DemoHelloWorldV1 and DemoHelloWorldV1Impl projects are installed 
+      into the local maven repository. Otherwise when the 
+      jetty-maven-plugin runs it can not locate the necessary 
+      files.</para>
+      <procedure>
+        <title>Install DemoHelloWorldV1 and DemoHelloWorldV1Impl</title>
+        <step>
+          <para>Select the project&apos;s pom.xml file.</para>
+        </step>
+        <step>
+          <para>Right mouse click and select Run As-&gt;Maven 
+          Install.</para>
+        </step>
+        <step>
+          <para>Repeat the steps for the remaining project.</para>
+        </step>
+      </procedure>
+    </section>
+    <section>
+      <title>Testing the Service</title>
+      <para>The final step is to actually build the WAR, launch the 
+      service for testing, and test it using your favorite web 
+      browser.</para>
+      <procedure>
+        <title>Launching and Testing the Service</title>
+        <step>
+          <para>Right click on the 
+          <emphasis>test-hello-world/pom.xml</emphasis>.</para>
+        </step>
+        <step>
+          <para>Select <emphasis>Run-As-&gt;Maven build</emphasis>. If 
+          this is the first time the build has run a Launch 
+          configuration will open and follow the next steps.</para>
+        </step>
+        <step>
+          <para>For the build goals enter: 
+          <emphasis>jetty:run-war</emphasis></para>
+        </step>
+        <step>
+          <para>Press <emphasis>RUN</emphasis> to save the 
+          configuration and run it.</para>
+          <para>This will launch a Maven Build, and build the war file. 
+          It will then start the Jetty application server running on 
+          Port 8080. Once the application server has been started the 
+          console View will indicate that Jetty has Started.</para>
+        </step>
+        <step>
+          <para>Open your web browser and enter the following url then 
+          press enter: 
+          <ulink url="http://localhost:8080/DemoHelloWorldV1Impl?wsdl">
+          http://localhost:8080/DemoHelloWorldV1Impl?wsdl</ulink></para>
+          <para>The service will display the WSDL that it is based 
+          against.</para>
+        </step>
+        <step>
+          <para>If the prior step worked, we can test our service 
+          implementation. By default the service returns XML format for 
+          the response. Enter the following url to have the server say, 
+          &quot;Hi, Turmeric&quot;. 
+          <ulink url="http://localhost:8080/DemoHelloWorldV1Impl?X-TURMERIC-OPERATION-NAME=hello&amp;helloText=Turmeric">
+          http://localhost:8080/DemoHelloWorldV1Impl?X-TURMERIC-OPERATION-NAME=hello&amp;helloText=Turmeric</ulink></para>
+          <para>A response should be returned that looks similar to the 
+          following:</para>
+          <programlisting lang="xml">&lt;helloResponse&gt;
    &lt;hi&gt;Hi, Turmeric&lt;/hi&gt;
 &lt;/helloResponse&gt;</programlisting>
-      </step>
-      <step>
-        <para>The service can also return JSON formatted responses, 
-        simply change the url to the following:</para>
-        <para>
-        <ulink url="http://localhost:8080/DemoHelloWorldV1Impl?X-TURMERIC-OPERATION-NAME=hello&amp;X-TURMERIC-RESPONSE-DATA-FORMAT=JSON&amp;helloText=Turmeric">http://localhost:8080/DemoHelloWorldV1Impl?X-TURMERIC-OPERATION-NAME=hello&amp;X-TURMERIC-RESPONSE-DATA-FORMAT=JSON&amp;helloText=Turmeric</ulink></para>
-        <para>A response will be returned that looks like the 
-        following:</para>
-        <programlisting lang="javascript">{&quot;helloResponse&quot;:{&quot;hi&quot;:&quot;Hi, Turmeric&quot;}}</programlisting>
-      </step>
-    </procedure>
-    <para>Congratulations you have successfully created a web service 
-    that understands XML and JSON data formats.</para>
+        </step>
+        <step>
+          <para>The service can also return JSON formatted responses, 
+          simply change the url to the following:</para>
+          <para>
+          <ulink url="http://localhost:8080/DemoHelloWorldV1Impl?X-TURMERIC-OPERATION-NAME=hello&amp;X-TURMERIC-RESPONSE-DATA-FORMAT=JSON&amp;helloText=Turmeric">http://localhost:8080/DemoHelloWorldV1Impl?X-TURMERIC-OPERATION-NAME=hello&amp;X-TURMERIC-RESPONSE-DATA-FORMAT=JSON&amp;helloText=Turmeric</ulink></para>
+          <para>A response will be returned that looks like the 
+          following:</para>
+          <programlisting lang="javascript">{&quot;helloResponse&quot;:{&quot;hi&quot;:&quot;Hi, Turmeric&quot;}}</programlisting>
+        </step>
+      </procedure>
+      <para>Congratulations you have successfully created a web service 
+      that understands XML and JSON data formats.</para>
+    </section>
   </section>
-</article>
+</chapter>

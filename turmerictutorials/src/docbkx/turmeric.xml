@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<book xmlns:xlink="http://www.w3.org/1999/xlink"
+      xmlns:xi="http://www.w3.org/2001/XInclude">
+      <bookinfo>
+        <title>Turmeric SOA</title>
+        <corpauthor>
+            eBay, Inc.
+        </corpauthor>
+        <collab>
+            <collabname>David Carver</collabname>
+            <affiliation>
+                <orgname>Intalio</orgname>
+            </affiliation>
+        </collab>
+        <copyright>
+            <year>2011</year>
+            <holder>eBay Inc.</holder>
+        </copyright>
+      </bookinfo>
+      
+    <xi:include href="installation.xml"/>
+    <xi:include href="helloworld.xml"/>
+</book>
